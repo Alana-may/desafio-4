@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Dados da Educação Básica no Brasil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo"><img src="images/logo.svg" alt="Logo Plataforma Educação"></a>
+            <ul>
+                <li><a href="#sobre">Sobre o Projeto</a></li>
+                <li><a href="dashboard.html">Acessar Dashboard</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container hero-content">
+                <h1>Dados para Transformar a Educação no Brasil</h1>
+                <p>Explore indicadores chave sobre acesso, permanência e qualidade da educação básica. Uma ferramenta
+                    essencial para gestores, educadores e toda a sociedade.</p>
+                <div class="dashboard-preview">
+                    <img src="images/dashboard-preview.png" alt="Preview do Dashboard Educacional">
+                </div>
+                <a href="dashboard.html" class="cta-button">Explore os Dados Agora</a>
+            </div>
+        </section>
+
+        <section id="sobre" class="sobre-section container">
+            <h2>Sobre o Projeto</h2>
+            <p>A plataforma tem como objetivo democratizar o acesso a informações cruciais sobre a educação básica
+                brasileira. Acreditamos que dados claros e acessíveis são fundamentais para...</p>
+            <h3>Para quem?</h3>
+            <ul>
+                <li>ONGs de educação</li>
+                <li>Secretarias municipais/estaduais de educação [cite: 49]</li>
+                <li>Educadores e pesquisadores</li>
+                <li>Comunidade escolar e cidadãos interessados</li>
+            </ul>
+        </section>
+
+        <section id="o-que-encontra" class="features-section container">
+            <h2>O que você encontra no Dashboard?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <img src="images/icon-evasao.svg" alt="Ícone Evasão Escolar">
+                    <h3>Taxa de Evasão Escolar</h3>
+                    <p>Analise a evasão por região, nível de ensino e compare dados históricos. [cite: 22]</p>
+                </div>
+                <div class="feature-item">
+                    <img src="images/icon-ideb.svg" alt="Ícone IDEB">
+                    <h3>Desempenho (IDEB)</h3>
+                    <p>Acompanhe as notas do IDEB por escola, cidade ou estado. [cite: 15]</p>
+                </div>
+                <div class="feature-item">
+                    <img src="images/icon-infra.svg" alt="Ícone Infraestrutura">
+                    <h3>Infraestrutura Escolar</h3>
+                    <p>Verifique o acesso à internet, bibliotecas, banheiros adequados e mais. [cite: 22]</p>
+                </div>
+                <div class="feature-item">
+                    <img src="images/icon-comparacao.svg" alt="Ícone Comparação entre regiões">
+                    <h3>Comparativos Regionais</h3>
+                    <p>Compare indicadores entre diferentes municípios e estados. [cite: 22]</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contato">
+        <div class="container">
+            <p>&copy; 2024 Nome da Equipe. Todos os direitos reservados.</p>
+            <p>Fontes de Dados: INEP, IBGE, QEdu.</p>
+            <p>Contato: <a href="mailto:contato@plataformaeducacao.com.br">contato@plataformaeducacao.com.br</a></p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Educação Básica no Brasil</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header class="dashboard-header">
+        <div class="container-fluid">
+            <a href="index.html" class="logo-dashboard"><img src="images/logo-branca.svg"
+                    alt="Logo Plataforma Educação"> Dashboard Educacional</a>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li class="active" data-target="visao-geral"><a href="#">Visão Geral</a></li>
+                    <li data-target="evasao"><a href="#">Evasão Escolar</a></li>
+                    <li data-target="ideb"><a href="#">IDEB</a></li>
+                    <li data-target="infraestrutura"><a href="#">Infraestrutura</a></li>
+                    <li data-target="professores"><a href="#">Professores</a></li>
+                </ul>
+            </nav>
+            <div class="filters-area">
+                <h3>Filtros</h3>
+                <div class="filter-group">
+                    <label for="filter-ano">Ano:</label>
+                    <select id="filter-ano">
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filter-regiao">Região (UF):</label>
+                    <select id="filter-regiao">
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filter-municipio">Município:</label>
+                    <select id="filter-municipio">
+                    </select>
+                </div>
+                <button id="apply-filters">Aplicar Filtros</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <section id="visao-geral" class="dashboard-section active-section">
+                <h2>Visão Geral</h2>
+                <div class="stats-counters">
+                    <div class="counter-item">
+                        <h4>Total de Matrículas</h4>
+                        <p id="counter-matriculas">Carregando...</p>
+                    </div>
+                    <div class="counter-item">
+                        <h4>Escolas na Seleção</h4>
+                        <p id="counter-escolas">Carregando...</p>
+                    </div>
+                    <div class="counter-item">
+                        <h4>IDEB Médio (Anos Iniciais)</h4>
+                        <p id="counter-ideb-iniciais">Carregando...</p>
+                    </div>
+                </div>
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <h3>Taxa de Evasão (Histórico Nacional)</h3>
+                        <canvas id="chart-evasao-nacional"></canvas>
+                        <p class="error-message" id="error-evasao-nacional" style="display:none;">Erro ao carregar
+                            dados.</p>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Distribuição de Matrículas por Etapa</h3>
+                        <canvas id="chart-dist-matriculas"></canvas>
+                        <p class="error-message" id="error-dist-matriculas" style="display:none;">Erro ao carregar
+                            dados.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="evasao" class="dashboard-section">
+                <h2>Evasão Escolar</h2>
+                <div class="chart-container">
+                    <h3>Evasão por Nível de Ensino (Seleção Atual)</h3>
+                    <canvas id="chart-evasao-nivel"></canvas>
+                    <p class="error-message" id="error-evasao-nivel" style="display:none;">Erro ao carregar dados.</p>
+                </div>
+            </section>
+
+            <section id="ideb" class="dashboard-section">
+                <h2>IDEB - Índice de Desenvolvimento da Educação Básica</h2>
+            </section>
+
+            <section id="infraestrutura" class="dashboard-section">
+                <h2>Infraestrutura Escolar</h2>
+                <div class="chart-container">
+                    <h3>Escolas com Acesso à Internet (%)</h3>
+                    <canvas id="chart-infra-internet"></canvas>
+                    <p class="error-message" id="error-infra-internet" style="display:none;">Erro ao carregar dados.</p>
+                </div>
+            </section>
+
+            <section id="professores" class="dashboard-section">
+                <h2>Professores</h2>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>
+
+<!-- Fontes: -->
+<!-- 1. https://github.com/EsdrasNeto05/netos-chatbot-website -->
+<!-- 2. https://github.com/mahrokh75/git_project_Alaei -->
+<!-- 3. https://stackoverflow.com/questions/53547498/jquery-error-only-on-ie11-syntax-error-foreachanchor -->
+<!-- 4. https://github.com/Rafael-N-Lopes/opa -->
+<!-- 5. https://stackoverflow.com/questions/78688642/javascript-debug-statements-not-showing-up-on-console -->
+<!-- 6. https://github.com/githubfdesire/TeamDesireSite -->
+<!-- 7. https://github.com/saloni-27/PRODIGY_WD_01 -->
